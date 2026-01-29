@@ -2,6 +2,14 @@ import streamlit as st
 import numpy as np
 import joblib
 
+# Fast health-check using new API
+query_params = st.query_params
+if "health" in query_params:
+    st.set_page_config(page_title="Health")
+    st.write("OK")
+    st.stop()
+
+
 # Load saved model and scaler
 model = joblib.load("HeartDisease_Ensemble.pkl")
 scaler = joblib.load("scaler.pkl")
